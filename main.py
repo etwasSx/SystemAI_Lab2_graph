@@ -54,4 +54,4 @@ def city_to_idx(city_array) -> dict:
 
 
 if __name__ == '__main__':
-    main('H:\\Programming\\SAI\\data.txt')
+    main('path')
