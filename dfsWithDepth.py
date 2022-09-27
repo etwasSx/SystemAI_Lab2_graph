@@ -3,7 +3,8 @@ from typing import List
 from abstractClass import ABCClass
 
 
-class DFSWithDepth(ABCClass):  # Всё аналогично dfs with iterative depth, только здесь мы глубину не перебираем
+class DFSWithDepth(ABCClass):
+    # Всё аналогично dfs с итеративной глубиной, только здесь мы глубину не перебираем
     used: List
     max_depth: int = 0
 
