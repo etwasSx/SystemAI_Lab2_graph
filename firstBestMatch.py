@@ -37,7 +37,6 @@ class FirstBestMatch(ABCClass):
                 node_arr.append((city_idx, distance))
         node_arr.sort(key=lambda a: a[1]) # Сортируем по длине ребер(расстоянию) в порядке возрастания
         for city_idx, distance in node_arr:
-            print((self.idx_to_city[city_idx], distance))
             self.path.append((self.idx_to_city[city_idx], distance))
             self.first_best_match_dfs(city_idx)
             if self.flag:
