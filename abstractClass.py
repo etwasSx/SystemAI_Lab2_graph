@@ -3,14 +3,15 @@ from typing import List, Dict
 
 
 class ABCClass(ABC):
-    adj_matrix: List[tuple]
-    city_to_idx: Dict
-    idx_to_city: Dict
+    adj_matrix: List[tuple] #список смежности
+    city_to_idx: Dict #словарь. Слева город, справа индекс
+    idx_to_city: Dict #Тоже что и выше, но наоборот
     n: int
-    dist: List
-    parent: List
-    iteration_counter: int = 0
+    dist: List  #вес ребер
+    parent: List #список родителей
+    iteration_counter: int = 0 #Сколько сделано шагов(итераций) для нахождения искомого города
 
+    # Конструктор
     def __init__(self, adj_matrix: List, city_to_idx: Dict, idx_to_city: Dict):
         self.adj_matrix = adj_matrix.copy()
         self.city_to_idx = city_to_idx.copy()
@@ -22,7 +23,7 @@ class ABCClass(ABC):
         self.parent = [-1 for _ in range(self.n)]  # Родители для вершин
         start_idx = self.city_to_idx[start]  # Индекс начального города(из условия задачи)
         end_idx = self.city_to_idx[end]  # Индекс конечного города(из условия задачи)
-        self.dist[start_idx] = 0
+        self.dist[start_idx] = 0 # Начальный город
         self.iteration_counter = 0  # Количество итераций, которое выполнил метод(нужно для таблички)
         return start_idx, end_idx
 
@@ -31,10 +32,10 @@ class ABCClass(ABC):
 
     def build_path(self, start_idx) -> List:  # Метод строющий путь, используя список родителей вершин
         path = []
-        cur_city = start_idx
-        while self.parent[cur_city] != -1:
-            path.append(cur_city)
-            cur_city = self.parent[cur_city]
+        cur_city = start_idx # стартовый город, его индекс
+        while self.parent[cur_city] != -1: # Пока есть родитель
+            path.append(cur_city) # Добавляем в путь индекс текущего города
+            cur_city = self.parent[cur_city] # переходим к родителю
         path.append(cur_city)
         return reversed(path)
 
