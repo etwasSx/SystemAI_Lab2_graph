@@ -1,7 +1,8 @@
 from abstractClass import ABCClass
 
 
-class DFSIterativeDepth(ABCClass):  # Весь алгорит аналогичен обычному dfs, просто теперь добавляется максимальная глубина, достигнув которую, мы возвращаемся назад по рекурсии
+class DFSIterativeDepth(ABCClass):
+    # Весь алгорит аналогичен обычному dfs, просто теперь добавляется максимальная глубина, достигнув которую, мы возвращаемся назад по рекурсии
     max_depth: int = 0
 
     def find_shortest_path(self, start, end):
